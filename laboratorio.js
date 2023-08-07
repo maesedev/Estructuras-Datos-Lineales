@@ -18,20 +18,16 @@ console.log("La suma de [" + array + "] es: " + suma(array ,  array.length - 1))
 
 
 /*
-
 Escribir una función recursiva que calcule y retorne el cuadrado de un numero entero n, 
 n ≥ 1, mediante el siguiente método: el cuadrado de n es igual a la suma de los n primeros 
 números impares. 
     Entrada. 4 
     Salida. 16 
 El cuadrado de 4 es, 1 + 3 + 5 + 7 = 16.
-
 */
 
 function cuad(n){
-    return n === 1 ? 
-                 1 : 
-                 (n*2) - 1 + cuad(n - 1)
+    return n === 1 ? 1 :  ( n * 2) - 1 + cuad( n - 1 )
 }
 
 
