@@ -5,21 +5,21 @@ let B = [7,6,5,4,3,2,1]
 Cree un programa que implemente funciones recursivas y funciones iterativas que reciban
     como parámetro dos arreglos 𝑎𝑟𝑟𝑎𝑦1 𝑦 𝑎𝑟𝑟𝑎𝑦2 no vacíos de números enteros naturales y
     realicen las siguientes operaciones:
+   
     a. Función que retorne un nuevo arreglo 𝑎𝑟𝑟𝑎𝑦3 con la suma de los elementos de ambos
-        arreglos 𝑎𝑟𝑟𝑎𝑦1[𝑖] + 𝑎𝑟𝑟𝑎𝑦2[𝑖]
+       arreglos 𝑎𝑟𝑟𝑎𝑦1[𝑖] + 𝑎𝑟𝑟𝑎𝑦2[𝑖]
 
-        b. Función para sumar los datos del arreglo 𝑎𝑟𝑟𝑎𝑦1, la función debe retorna el resultado
-        de la suma de los datos impares.
-        */
+    b. Función para sumar los datos del arreglo 𝑎𝑟𝑟𝑎𝑦1, la función debe retorna el resultado
+       de la suma de los datos impares.
+*/
 
 // 1-a
 function SumArrays(arrA,arrB){
     let arrC = []
     function sumByIndex(i){
+
         arrC.unshift(arrA[i] + arrB[i])
-
         if(i === 0) return arrC
-
         sumByIndex(i - 1)
     }
 
