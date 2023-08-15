@@ -4,11 +4,11 @@ let B = [7,6,5,4,3,2,1]
 
 function search(arr,n){
 
-    let i = arr.length
+    let i = arr.length - 1
     const iterate= i =>{
         if(i == -1) return -1
 
-        if(arr[i - 1] == n) return i - 1
+        if(arr[i ] == n) return i 
 
         else return iterate(i-1)
     

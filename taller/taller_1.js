@@ -15,7 +15,9 @@ Cree un programa que implemente funciones recursivas y funciones iterativas que 
 
 // 1-a
 function SumArrays(arrA,arrB){
+
     let arrC = []
+
     function sumByIndex(i){
 
         arrC.unshift(arrA[i] + arrB[i])
@@ -47,3 +49,4 @@ function SumArraysElementosImpares(A, i = A.length-1){
 console.log("\n\n----------Ejercicio 1-b----------")
 console.log(A);
 console.log(SumArraysElementosImpares(A));
+

@@ -11,7 +11,7 @@ Ejercicio 2
 
 
 function equals(arr1,arr2, i = arr1.length - 1){
-    if(arr1.length !== arr2.length)return false
+    
     if(i == 0) return true
     if(arr1[i] === arr2[i]) return  true && equals(arr1, arr2, i -1)
     else return false
@@ -32,7 +32,7 @@ function equals2(arr1,arr2){
 }
 
 
-//console.log("\n\nRecursive: ",equals2([1,2,3],[1,2,3]));
+console.log("\n\nRecursive: ",equals2([1,2,3],[1,2,3]));
 
 
 
