@@ -5,6 +5,7 @@ class Node:
         self.data = data
         self.next = next
 
+
 # Creamos la clase linked_list
 class ListaEnlazada:
     """Lista enlazada"""
@@ -28,46 +29,23 @@ class ListaEnlazada:
         if self.is_empty():
             self.head = Node(data=data)
             return
-        
         # Iniciamos desde el principio de la lista
         curr = self.head
-
-        # Iteramos desde la cabeza, hasta encontrar el ultimo elemento, que NODO.next seria NULL 
+        # Iteramos desde la cabeza, hasta encontrar el ultimo elemento, que NODO.next seria None 
         while curr.next:
             curr = curr.next
         curr.next = Node(data=data)
 
         self.numero_elementos += 1
-    
-    # def delete_node(self, key):
-    #     """ Método para eleminar nodos """
-    #     #Iniciamos al principio de la lista
-    #     curr = self.head
-    #     prev = None
-
-    #     while curr and curr.data != key:
-    #         #busca en cada nodo si el KEY es igual al nodo actual
-    #         prev = curr
-    #         #Pasamos al siguiente nodo para reiniciar la iteracion
-    #         curr = curr.next
-
-
-    #     # Si el elemento que queremos eliminar es el primero entonces hacemos que la cabeza sea el siguiente elemento
-    #     if prev is None:
-    #         self.head = curr.next
-    #         prev.next = curr.next
-    #         curr.next = None
-
-    #     self.numero_elementos -= 1
 
     def get_last_node(self):
         """Método para obtener el ultimo nodo"""
-        temp = self.head
-        while(temp.next is not None):
-            temp = temp.next
-        return temp.data
+        curr = self.head
+        while curr.next:
+            curr = curr.next
+        return curr.data
 
-    def exists(self,data):
+    def exist(self,data):
         """Método para saber si existe un nodo con cierto valor"""
         # Si no hay elementos entonces no existe porque no hay elementos
         if self.is_empty():
@@ -77,7 +55,6 @@ class ListaEnlazada:
         curr = self.head
 
         # Iteramos desde la cabeza, hasta encontrar el ultimo elemento, que NODO.next seria NULL 
-        
         while curr is not None and curr.data != data :
             if curr.data == data:
                 return True
@@ -95,34 +72,62 @@ class ListaEnlazada:
         if self.is_empty():
             print("la lista esta vacia")
             return 
+        
+        # Nos posicionamos desde la cabeza
         Node = self.head
-        print("\nlista ",nombre)
+        print("lista ",nombre)
+
         list_elements_string =""
+
         while Node is not None:
             list_elements_string += str(Node.data) + " => "
             Node = Node.next
-        list_elements_string += " null"    
+
+        list_elements_string += "null"    
         print(f"{list_elements_string}\n")
 
     def get(self,i):
+        """Funcion recursiva para encontrar un elemento por el indice de la lista"""
         if i > self.numero_elementos: 
             return "Error: List out of range"
+        
         n = 0
+        # nos posicionamos desde la cabeza para iterar a travez de la lista
         node = self.head
+
         def recursive (n,node):
             if n == i:
                 return node.data
             return recursive( n+1 , node.next)
+        
         return recursive(n, node)
     
+    def add_between(self, index, data):
+        """Función que agrega un elemento entre nodos"""
 
-list = ListaEnlazada()
+        if index > self.numero_elementos: 
+            return "Error: List out of range"
 
-list.add_at_end(20)
-list.add_at_end(30)
-list.add_at_end(40)
-list.add_at_end(50)
-list.add_at_end(60)
+        # Si queremos agregar entre el primer y segundo nodo, osea en el indice 0
+        if index == 0:
+            self.add_at_start(data)
+            return
+        
+        # Iniciamos desde el principio de la lista
+        curr = self.head
 
-list.print_list(nombre="A")
-print(list.get(2))
+        # Posiciononarse en el nodo que necesito (indice - 1)
+        for _ in range(index - 1):
+            curr = curr.next
+        
+        new_node = Node(data=data, next=curr.next)
+        curr.next = new_node
+        self.numero_elementos += 1
+    
+    # def delete_element(self, index):
+    #     """Función que elimina el elemento en el índice dado de la lista"""
+
+    #     if index == 0:
+
+    #     return 
+
