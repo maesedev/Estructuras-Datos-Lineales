@@ -124,6 +124,23 @@ class ListaEnlazada:
         curr.next = new_node
         self.numero_elementos += 1
     
+    def edit(self,index, data):
+        if self.is_empty():
+            return False
+        curr = self.head
+
+        if self.size()-1 < index:
+            print("Error")
+            return False
+
+        for _ in range(index - 1):
+            curr = curr.next
+        curr.data = data
+        return True
+
+    def size(self):
+        return self.numero_elementos
+
     # def delete_element(self, index):
     #     """Función que elimina el elemento en el índice dado de la lista"""
 
