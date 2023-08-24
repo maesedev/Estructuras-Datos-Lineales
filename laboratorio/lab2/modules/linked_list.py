@@ -89,7 +89,7 @@ class ListaEnlazada:
     def get(self,i):
         """Funcion recursiva para encontrar un elemento por el indice de la lista"""
         if i > self.numero_elementos: 
-            return "Error: List out of range"
+            return None
         
         n = 0
         # nos posicionamos desde la cabeza para iterar a travez de la lista
