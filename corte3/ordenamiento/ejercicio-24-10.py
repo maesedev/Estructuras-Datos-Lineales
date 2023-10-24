@@ -1,4 +1,8 @@
 from random import randint, choice
+
+
+
+
 def ordenar_nota_ascendente(nombres, codigos, notas):
     nb = len(codigos)
     
@@ -37,7 +41,7 @@ nombres = []
 
 for i in range (0,N):
     
-	codigos.insert( i , f"A-50{i}" )
+	codigos.insert( i , f"A-50{i + 1}" )
 	for j in range(0,3):
 	    notas[ i ].append(  randint(20,50) / 10  )
 	    
@@ -47,12 +51,22 @@ for i in range (0,N):
 	notas.append([])
 	
 	nombres.insert(i, choice(nombres_aleatorios) )
-	print(f" Notas estudiante A-50{i} ")
+
+	"""
+	print(f"Notas del estudiante A-50{i + 1} ")
     
-	print(notas[i])
+	print(f"Corte 1: \t{notas[i][0]} ")
+	print(f"Corte 2: \t{notas[i][1]} ")
+	print(f"Corte 3: \t{notas[i][2]} ")
+	print(f"Definitiva: \t{notas[i][3]} \n")"""
 	
+
 ordenar_nota_ascendente(nombres, codigos, notas)
 print("\n\n-----------------------------")
 for i in range(0,N):
-    print(codigos[i])
-    print(notas[i])
+    
+    print(f"Notas del estudiante {codigos[i]} ")
+    print(f"Corte 1: \t{notas[i][0]} ")
+    print(f"Corte 2: \t{notas[i][1]} ")
+    print(f"Corte 3: \t{notas[i][2]} ")
+    print(f"Definitiva: \t{notas[i][3]} \n")
