@@ -1,8 +1,5 @@
 from random import randint, choice
 
-
-
-
 def ordenar_nota_ascendente(nombres, codigos, notas):
     nb = len(codigos)
     
