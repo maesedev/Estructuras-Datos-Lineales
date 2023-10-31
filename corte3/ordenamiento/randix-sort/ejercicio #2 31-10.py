@@ -9,11 +9,12 @@ def randix_sort(lista):
 
         for item in lista:
             if len(str(item)) < maximo_digitos:
-                temp = str(f"{'0' * maximo_digitos}{str(item)}")[-maximo_digitos:]
-                digitos[ int( str(temp)[-(i+1)] ) ].append( int(temp) )
-            else:
-                digitos[ int( str(item)[-(i+1)] ) ].append(item)
+                print(item)
+                item = ("0" * maximo_digitos + item)[-maximo_digitos]
+                print(item)
+            digitos[ int( str(item)[-(i+1)] ) ].append(item)
         lista = []
+
         print("Digitos: ",digitos)
 
         for j, arr_digito in enumerate(digitos):
@@ -25,7 +26,7 @@ def randix_sort(lista):
 
 
 
-arr = [randint(100,999) for x in range(0,5)]
+arr = [randint(1,99) for x in range(0,5)]
 arr_ordenado = randix_sort(arr)
 
 print(arr_ordenado)
