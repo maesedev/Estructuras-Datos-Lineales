@@ -1,28 +1,41 @@
 from random import randint
 
-def randix_sort_modificado(lista):
-    digitos = [[] for i in range(0,10)]
+def randix_sort_modificado(codigos_list, cantidades_list, precios_list):
 
-    maximo_digitos = len(str(max(lista)))
-    for i in range(0,maximo_digitos):  
+    # [ [0] , [1] , [2],..., [9] ]
+    # [ [ 1000,  cantidad ,  [precios] ]  ,
+    #                   ,...,
+    #  [ [1090] ,  cantidad ,  [precios] ]]
 
-        print("lista: ",lista)
+    
 
-        for item in lista:
-            if len(str(item)) < maximo_digitos:
-                temp = str(f"{'0' * maximo_digitos}{str(item)}")[-maximo_digitos:]
-                digitos[ int( str(temp)[-(i+1)] ) ].append( int(temp) )
-            else:
-                digitos[ int( str(item)[-(i+1)] ) ].append(item)
-        lista = []
-        print("Digitos: ",digitos)
+    digitos = [ [None , 0 , []]  for i in range(0,10)]
+    N_elem =  len(codigos_list)
+    print("\nlista previa: ",codigos_list)
+    print("\nOrdenando...\n")
 
-        for j, arr_digito in enumerate(digitos):
-            for num in arr_digito:
-                lista.append(num)
-            digitos[ j ] = []
+    for i in range(0, N_elem):
+        index = int(str(codigos_list[i]) [2] )
 
-    return lista
+        digitos[ index ][0] = codigos_list[i]
+        digitos[ index ][1] += cantidades_list[i]
+        digitos[ index ][2].append(precios_list[i])
+        
+    # Vaciar las listas
+    codigos_list = []
+    cantidades_list = []
+    precios_list = []
+
+    ## volver a llenar las listas
+    for item in digitos:
+        # En el caso de que no se haya llenado una posicion, no lo agregamos a las listas finales
+        if item[0] is None:
+            continue
+        codigos_list.append( item[0] )
+        cantidades_list.append( item[1] )
+        precios_list.append( round(sum(item[2]) / len(item[2])    ,2) )
+    # retornar las listas ordenadas
+    return [codigos_list, cantidades_list, precios_list]
 
 
 codigos     = []
@@ -38,9 +51,16 @@ for i in range(0,N):
     precios.append( randint(1, 30) * 10 )
 
 
-print(codigos)
-print(cantidades)
-print(precios)
+for i in range(0,N):
+    print(f"Codigo: {codigos[i]} \tCantidad: {cantidades[i]} \tPrecio: {precios[i]}")
 
 
+[
+codigos_ordenado,
+cantidades_ordenado,
+precios_ordenado
+]  =                    randix_sort_modificado(codigos,cantidades, precios )
 
+
+for i in range(0,len(codigos_ordenado)):
+    print(f"Codigo: {codigos_ordenado[i]} \tCantidad: {cantidades_ordenado[i]} \tPrecio: {precios_ordenado[i]}")
