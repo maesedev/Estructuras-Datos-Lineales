@@ -1,5 +1,6 @@
 from random import randint
-def randix_sort(lista):
+
+def randix_sort_modificado(lista):
     digitos = [[] for i in range(0,10)]
 
     maximo_digitos = len(str(max(lista)))
@@ -9,12 +10,11 @@ def randix_sort(lista):
 
         for item in lista:
             if len(str(item)) < maximo_digitos:
-                print(item)
-                item = ("0" * maximo_digitos + item)[-maximo_digitos]
-                print(item)
-            digitos[ int( str(item)[-(i+1)] ) ].append(item)
+                temp = str(f"{'0' * maximo_digitos}{str(item)}")[-maximo_digitos:]
+                digitos[ int( str(temp)[-(i+1)] ) ].append( int(temp) )
+            else:
+                digitos[ int( str(item)[-(i+1)] ) ].append(item)
         lista = []
-
         print("Digitos: ",digitos)
 
         for j, arr_digito in enumerate(digitos):
@@ -25,8 +25,22 @@ def randix_sort(lista):
     return lista
 
 
+codigos     = []
+cantidades  = []
+precios     = []
 
-arr = [randint(1,99) for x in range(0,5)]
-arr_ordenado = randix_sort(arr)
+N = randint(6, 15)
 
-print(arr_ordenado)
+# LLENAR LAS LISTAS CON DATOS ALEATORIOS #
+for i in range(0,N):
+    codigos.append( f"10{ randint(0,9) }0" )
+    cantidades.append( randint(0,59) )
+    precios.append( randint(1, 30) * 10 )
+
+
+print(codigos)
+print(cantidades)
+print(precios)
+
+
+

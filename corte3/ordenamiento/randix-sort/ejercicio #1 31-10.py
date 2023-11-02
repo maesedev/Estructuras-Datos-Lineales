@@ -5,7 +5,7 @@ def randix_sort(lista):
     maximo_digitos = len(str(max(lista)))
     for i in range(0,maximo_digitos):  
 
-        print("lista: ",lista)
+        print(f"lista, iteracion {i+1}: \t",lista)
 
         for item in lista:
             if len(str(item)) < maximo_digitos:
@@ -14,7 +14,7 @@ def randix_sort(lista):
             else:
                 digitos[ int( str(item)[-(i+1)] ) ].append(item)
         lista = []
-        print("Digitos: ",digitos)
+        print("Digitos: ",digitos,"\n")
 
         for j, arr_digito in enumerate(digitos):
             for num in arr_digito:
